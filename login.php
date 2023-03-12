@@ -2,22 +2,27 @@
 
 <?php
 session_start();
+
+//Lee los datos enviados
 if($_POST){
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
+    //Compara que los datos no esten vacios
     if(!empty($_POST['usuario']) and !empty($_POST['password'])){
         
+        //Hace una consulta a la base de datos
         $records = $conn->prepare('SELECT id,usuario,password FROM users WHERE usuario=:usuario');
         $records->bindParam(':usuario',$_POST['usuario']);
         $records->execute();
+        //Compara resultados
         $results = $records->fetch(PDO::FETCH_ASSOC);
 
         $message = '';
-
+        //Lee la contraseña encriptada con la enviada por el usuario
         if(count($results) > 0 && password_verify($_POST['password'], $results['password'])){
+            //Si la validacion es exitosa se reenvia al usuario al index.php
             $_SESSION['id'] = $results['id'];
-
             header('location:index.php');
         }
         else{
@@ -64,12 +69,12 @@ if($_POST){
                   <div class="p-3 mb-2 bg-dark text-white rounded"><h1>Login</h1></div>
                     <form action="login.php" method="post">
                         <div class="mb-3">
-                            <label  for="exampleInputEmail1" class="form-label">Email address</label>
+                            <label  for="exampleInputEmail1" class="form-label">Correo</label>
                             <input name="usuario" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" class="form-text">No compartas tu correo con nadie.</div>
                         </div>
                         <div class="mb-3">
-                            <label  for="exampleInputPassword1" class="form-label">Password</label>
+                            <label  for="exampleInputPassword1" class="form-label">Contraseña</label>
                             <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>

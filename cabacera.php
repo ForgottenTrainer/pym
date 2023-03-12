@@ -2,16 +2,17 @@
 
 <?php
 
+//Lee el inicio de sesion
 session_start();
 if (isset($_SESSION['id'])){
-
+    //Compara el id del inicio de sesion con la base de datos para localizar el usuario
     $records = $conn->prepare('SELECT id, usuario, password, nombre, perfil, roll FROM users WHERE id = :id');
     $records->bindParam(':id',$_SESSION['id']);
     $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-
+    $results = $records->fetch(PDO::FETCH_ASSOC); //Imprime los resultados
     $user = null;
 
+    //Si hay resultado se pasa la variable a user
     if(count($results) > 0){
       $user = $results;
     }

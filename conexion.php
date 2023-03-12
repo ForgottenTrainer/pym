@@ -1,6 +1,8 @@
 <?php
 
+//Crea la clase para la conexion de base de datos
 class conexion{
+    //Lee la conexion de la base de datos
     private $servidor="localhost";
     private $usuario="root";
     private $contrasenia = "";
@@ -9,7 +11,7 @@ class conexion{
     public function __construct(){
 
         try {
-            //code...
+            //Si todo es correcto se crea la conexion
             $this->conexion= New PDO("mysql:host=$this->servidor;dbname=album;", $this->usuario, $this->contrasenia);
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             

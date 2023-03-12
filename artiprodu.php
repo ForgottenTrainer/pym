@@ -3,11 +3,14 @@
 
 <?php
 
+//Lee la categoria que selecciono el usuario
 if($_GET['categoria']){
     $categoria = $_GET['categoria'];
+    //Hace una consulta a base de datos en donde comparara resultados con lo que enviado por el usuario
     $sql = $conn->prepare("SELECT * FROM `proyecto` WHERE categoria = :categoria");
     $sql->bindParam(':categoria',$categoria);
     $sql->execute();
+    //Imprimira los resultados obtenidos
     $filtro = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 }
@@ -25,6 +28,7 @@ else {
     <br/>
     <br>
     <div class="row ro-cols-1 row-cols-md-3 g-4">
+    <!-- Imprime los resultados -->
         <?php foreach($filtro as $proyectos) { ?>
             <div class="card m-2 shadow p-3 mb-5" style="width: 18rem;" id="<?php echo $proyectos['categoria']; ?>">
                 <img width="100" height="200" src="imagenes/<?php echo $proyectos['imagen']; ?>" class="card-img-top" alt="...">

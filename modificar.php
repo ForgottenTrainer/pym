@@ -3,14 +3,16 @@
 
 <?php
 
+//Lee el inicio de sesion y lo compara con la base de datos
 if(isset($_GET['id'])) $id = $_GET['id'];
-
+// Agarra todo lo del usuario en donde encuentro el id correspondiente
 $sql = "SELECT * FROM users  WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $count = $stmt->rowCount();
 
+//Si count es mayor a 0 se crea la variable datos e imprime los resultados
 if($count > 0){
     $datos = $stmt->fetch();
 }

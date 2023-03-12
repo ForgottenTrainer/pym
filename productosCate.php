@@ -12,6 +12,7 @@ $proyecto = $ObjConexion->consultar("SELECT * FROM `proyecto`");
     <h3 class="title">Productos</h3>
     <br />
     <div class="row">
+        <!-- Envia de manera personalizada las categorias que eliga el usuario -->
         <div class="col"> <a href="artiprodu.php?categoria=<?php echo "Vehiculos"; ?>" class="btn btn-primary"><i class='bx bx-car'></i> Vehiculos</a></div>
         <div class="col"> <a href="artiprodu.php?categoria=<?php echo "Muebles"; ?>" class="btn btn-primary"><i class='bx bx-home'></i> Muebles </a></div>
         <div class="col"> <a href="artiprodu.php?categoria=<?php echo "Ropa"; ?>" class="btn btn-primary"><i class='bx bxs-t-shirt'></i> <br/> Ropa </a></div>

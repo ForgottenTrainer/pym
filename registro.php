@@ -1,22 +1,28 @@
 <?php include("coneLog.php"); ?>
 <?php
 
+//Lee si se envio informacion en caso de obtener informacion ejecuta el codigo
 if($_POST){
     //print_r($_POST);
+    //Lee los datos enviado por el usuario
     $usuario = $_POST['correo'];
     $password = $_POST['contra'];
     $nombre = $_POST['nombre'];
     $roll = 'usuario';
 
+    //Compara que no haya datos vacios
     if($usuario != '' and $password != '' and $nombre != ''){
+        //Inserta los valores a la base de datos
         $sql = "INSERT INTO users (usuario, password, nombre, roll) VALUES (:usuario, :password, :nombre, :roll)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':usuario', $usuario);
+        //Encripta la contraseña
         $passw = password_hash( $_POST['contra'], PASSWORD_BCRYPT);
         $stmt->bindParam(':password', $passw);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':roll',$roll);
 
+        //Si se cumple los requisitos se envia una alerta de success
         if($stmt->execute()){
             echo '
             <div class="m-auto mt-2 w-25 p-3 alert alert-success" role="alert">

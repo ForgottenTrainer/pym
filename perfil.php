@@ -1,15 +1,17 @@
 <?php include ("cabacera.php"); ?>
 <?php include ("conexion.php"); ?>
 <?php
-
+//Lee el usuario de inicio de sesion
 if(isset($_GET['id'])) $id = $_GET['id'];
 
+//Hace la consulta de base de datos comparando el id de inicio de sesion
 $sql = "SELECT * FROM users  WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $count = $stmt->rowCount();
 
+// Si la variable count es mayor a 0 ejecuta los resultados
 if($count > 0){
     $datos = $stmt->fetch();
 }
@@ -41,3 +43,5 @@ if($count > 0){
         </div>
     </form>
 </div>
+
+<?php include("pie.php"); ?>

@@ -4,15 +4,17 @@
 <?php
 
 if(isset($_GET['id'])){
-    $id = $_GET['id'];
+    //Lee el id recibido del producto seleccionado
 
+    $id = $_GET['id'];
+    //Lee el id del producto y llama al contenido
     $records = $conn->prepare("SELECT * FROM servicio WHERE id = :id");
     $records->bindParam(':id',$id);
     $records->execute();
     $row = $records->fetch(PDO::FETCH_ASSOC);
 
     $user_id = $row['user_id'];
-
+    //Lee al usuario el cual subio el producto
     $users = $conn->prepare("SELECT * FROM users WHERE id = :id");
     $users->bindParam(':id', $user_id);
     $users->execute();

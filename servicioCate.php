@@ -13,6 +13,7 @@ $proyecto = $ObjConexion->consultar("SELECT * FROM `servicio`");
     <h3 class="title">Servicios</h3>
     <br>
     <div class="row">
+     <!-- Envia de manera personalizada las categorias que eliga el usuario -->
         <div class="col"> <a href="artiserv.php?categoria=<?php echo "Escolares"; ?>" class="btn btn-primary"><i class='bx bx-library' ></i> Escolares </a></div>
         <div class="col"> <a href="artiserv.php?categoria=<?php echo "Plomeria"; ?>" class="btn btn-primary"><i class='bx bx-shower'></i>    Plomeria </a></div>
         <div class="col"> <a href="artiserv.php?categoria=<?php echo "Electricidad"; ?>" class="btn btn-primary"><i class='bx bx-plug'></i>  Electricidad </a></div>

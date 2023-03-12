@@ -28,6 +28,7 @@ if($_POST){
         move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
 
         $ObjConexion = new conexion();
+        //Inserta los datos a la base de datos
         $sql="INSERT INTO `servicio` (`id`, `nombre`, `imagen`, `descripcion`,`categoria`, `user_id`) VALUES (NULL, '$nombre', '$imagen', '$descripcion','$categoria','$user_id');";
         $ObjConexion->ejecutar($sql);
     }
