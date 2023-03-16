@@ -44,7 +44,7 @@ else {
       <p class="col-md-8 fs-4 m-auto"> <?php echo $row['descripcion'] ?> </p>
       <p class="col-md-8 "> Categoria: <?php echo $row['categoria']; ?> </p>
       <p class="col-md-8 fs-4 m-auto">$ <?php echo $row['precio'];?> </p>
-      <button class="btn btn-success">Contactar vendedor</button>
+      <a  href="chats.php?users=<?php echo $user['nombre']; ?>" class="btn btn-success">Contactar vendedor</a>
       <button class="btn btn-danger">Reportar publicacion</button>
       <input type="hidden" value="<?php echo $row['user_id']; ?>"/>
     </div>

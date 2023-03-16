@@ -77,7 +77,7 @@
             <h4 class="my-0 fw-normal">Novato</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$199.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$99.99<small class="text-muted fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>5 Publicaciones de productos</li>
               <li>Atencion al cliente</li>
@@ -94,7 +94,7 @@
             <h4 class="my-0 fw-normal">Pro</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$349.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$299.99<small class="text-muted fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>20 Publicaciones de productos</li>
               <li>10 Publicaciones de servicios</li>
@@ -111,7 +111,7 @@
             <h4 class="my-0 fw-normal">Empresa</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$549.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$599.99<small class="text-muted fw-light">/mo</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Publicaciones de productos ilimitado</li>
               <li>Publicaciones de servicios 15</li>
