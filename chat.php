@@ -4,6 +4,7 @@ include "cabacera.php";
 if(isset($user['nombre'])){
     include "helpers/user.php";
     include 'helpers/conversations.php';
+    include 'helpers/last_chat.php';
     //Extraemos los datos del Usuario
     $users = getUser($user['nombre'], $conn);
     //Obteniendo las conversaciones de los usuarios
@@ -63,10 +64,15 @@ a{
                         <div class="d-flex align-items-center">
                             <img class="rounded-circle" width="50" height="50" src="perfiles/<?= $conversation['perfil']; ?>" />
                             <h3 class="fs-xs m-2"> <?= $conversation['nombre']; ?> </h3>
+                            <small>
+                                <?php 
+                                    //echo lastChat($user['id'], $conversation['id'], $conn);
+                                ?>
+                            </small>
                         </div>
-                        <div title="online">
+                        <!--<div title="online">
                             <div class="online"></div>
-                        </div>
+                        </div> -->
                     </a>
                 </li>
                 <?php } ?>

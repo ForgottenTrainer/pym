@@ -45,7 +45,7 @@ $proyecto = $ObjConexion->consultar("SELECT * FROM `proyecto`");
                     <h5 class="card-title"><?php echo $proyectos['nombre']; ?></h5>
                     <p class="card-text"><?php echo "$".$proyectos['precio']; ?></p>
                     <a href="<?php echo'Articulos.php?id='.$proyectos['id']; ?>" class="btn btn-primary mb-2 w-100">Checar articulo</a>
-                    <a href="#" class="btn btn-success w-100">Contactar vendedor</a>
+                    <a href="#" class="btn btn-danger w-100">Reportar publicacion</a>
                 </div>
             </div>
         <?php } ?>

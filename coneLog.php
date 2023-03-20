@@ -4,7 +4,7 @@
 $server = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'album';
+$database = 'pym';
 
 try {
     //Si todo es correcto se crea la conexion

@@ -5,6 +5,7 @@ if(isset($user['nombre'])){
 
 	include "helpers/user.php";
 	include "helpers/chas.php";
+	include "helpers/opened.php";
 
 	if(!isset($_GET['users'])){
 		header("Location: chat.php");
@@ -19,6 +20,8 @@ if(isset($user['nombre'])){
 	}	
 
 	$chats = getChats($_SESSION['id'], $chatWith['id'], $conn);
+
+	
 
 }
 
@@ -70,6 +73,7 @@ small {
 }
 
 .chat-box {
+	overflow-x: hidden;
 	overflow-y: auto;
 	max-height: 50vh;
 }
@@ -144,7 +148,24 @@ textarea {
     			scrollDown();
 	    	});
     	});
+
+	   	//Auto refresh
+		let fetchData = function(){
+			$.post("ajax/getMessage.php",
+					{
+						id_2: <?= $chatWith['id'] ?>
+					},
+	    		function(data, status){
+	    			$("#chatBox").append(data);
+	    			
+		    	});
+		}
+
+		fetchData();
+
+		setInterval(fetchData, 500);
     });
+
 </script>
 
 <?php include("pie.php"); ?>

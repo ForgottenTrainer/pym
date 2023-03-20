@@ -12,7 +12,7 @@ class conexion{
 
         try {
             //Si todo es correcto se crea la conexion
-            $this->conexion= New PDO("mysql:host=$this->servidor;dbname=album;", $this->usuario, $this->contrasenia);
+            $this->conexion= New PDO("mysql:host=$this->servidor;dbname=pym;", $this->usuario, $this->contrasenia);
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             
         } catch (PDOException $e) {
