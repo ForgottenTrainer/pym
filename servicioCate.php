@@ -8,22 +8,33 @@ $proyecto = $ObjConexion->consultar("SELECT * FROM `servicio`");
 
 
 ?>
+<style>
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+</style>
 
 <div class="container">
     <h3 class="title">Servicios</h3>
-    <br>
-    <div class="row">
-     <!-- Envia de manera personalizada las categorias que eliga el usuario -->
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Escolares"; ?>" class="btn btn-primary"><i class='bx bx-library' ></i> Escolares </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Plomeria"; ?>" class="btn btn-primary"><i class='bx bx-shower'></i>    Plomeria </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Electricidad"; ?>" class="btn btn-primary"><i class='bx bx-plug'></i>  Electricidad </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Hogar"; ?>" class="btn btn-primary"><i class='bx bx-home-heart' ></i> <br/> Hogar </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Renta"; ?>" class="btn btn-primary"><i class='bx bx-home-circle' ></i> <br/> Renta </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Herreria"; ?>" class="btn btn-primary"><i class='bx bx-wrench'></i> <br/> Herreria </a></div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Veterinaria"; ?>" class="btn btn-primary"><i class='bx bxs-dog' ></i> Veterinaria </a> </div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Cerrajeria"; ?>" class="btn btn-primary"><i class='bx bx-lock-open' ></i> Cerrajeria </a> </div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Tecnologia"; ?>" class="btn btn-primary"><i class='bx bx-laptop' ></i> Tecnologia </a> </div>
-        <div class="col"> <a href="artiserv.php?categoria=<?php echo "Carpinteria"; ?>" class="btn btn-primary"><i class='bx bxs-tree-alt'></i> Carpinteria </a> </div>
+    <br>     <!-- Envia de manera personalizada las categorias que eliga el usuario -->
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filtros
+      </button>
+      <ul class="dropdown-menu">
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Escolares"; ?>">Escolares </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Plomeria"; ?>"> Plomeria </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Electricidad"; ?>"> Electricidad </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Hogar"; ?>"> Hogar </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Renta"; ?>"> Renta </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Herreria"; ?>" > Herreria </a></div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Veterinaria"; ?>">Veterinaria </a> </div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Cerrajeria"; ?>" > Cerrajeria </a> </div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Tecnologia"; ?>" > Tecnologia </a> </div></li>
+        <li><div class="col"> <a href="artiserv.php?categoria=<?php echo "Carpinteria"; ?>"> Carpinteria </a> </div></li>
+      </ul>
     </div>
     <br/>
     <br>
