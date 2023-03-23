@@ -1,9 +1,10 @@
-<?php include ("coneLog.php")?>
+<?php include ("coneLog.php"); ?>
 
 <?php
-
 //Lee el inicio de sesion
-session_start();
+session_start();?>
+
+<?php
 if (isset($_SESSION['id'])){
     //Compara el id del inicio de sesion con la base de datos para localizar el usuario
     $records = $conn->prepare('SELECT id, usuario, password, nombre, perfil, roll FROM users WHERE id = :id');
@@ -17,8 +18,9 @@ if (isset($_SESSION['id'])){
       $user = $results;
     }
 
-
 }
+
+
 else {
   header("location:login.php");
 }
@@ -35,7 +37,10 @@ $stmt->execute();
 if($stmt->rowCount() > 0){
     $open = $stmt->fetchAll();
 }
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,17 +72,9 @@ if($stmt->rowCount() > 0){
                 </li>
                 <li class="nav-item">
                     <a href="chat.php?id=<?php echo $user['id']; ?>" class="btn btn-primary position-relative">
-                      <i class='bx bx-conversation'></i> chat
-                        <?php foreach($open as $opened) { ?>
-                            <?php if ($user['id'] == $opened['to_id']) { ?>
-                                <?php if ($opened['opened'] == 0) { ?>
-                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                      Nuevo mensaje
-                                  </span>
-                                <?php }  ?>
-                            <?php } ?>
-                        <?php } ?>
-                  </a>
+                        <i class='bx bx-conversation'></i> chat
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;"></span>
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,9 +97,29 @@ if($stmt->rowCount() > 0){
     </nav>
 
     <script>
-        $(document).ready(function(){
-            var refreshId = setInterval( function(){
-            $('#feedd').load('cabacera.php');//actualizas el div automaticamente
-            }, 2000 );
-        });
+    $(document).ready(function() {
+        function fetchNotifications() {
+            $.ajax({
+                url: 'helpers/notificacion.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.length > 0) {
+                        $('.notification-badge').html('Nuevo mensaje').show();
+                    } else {
+                        $('.notification-badge').hide();
+                    }
+                },
+                error: function() {
+                    console.log('Error al obtener las notificaciones.');
+                },
+                complete: function() {
+                    setTimeout(fetchNotifications, 500); // 10000ms = 10 segundos
+                }
+            });
+        }
+
+        fetchNotifications();
+    });
     </script>
+
