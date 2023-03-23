@@ -24,6 +24,18 @@ else {
 }
 ?>
 
+<?php 
+
+//Datos del usuario
+
+$sql = "SELECT from_id , to_id ,opened FROM chats";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+
+if($stmt->rowCount() > 0){
+    $open = $stmt->fetchAll();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +51,7 @@ else {
 </head>
 <body class="bg-light ">
   <div class="container">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded-3">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded-3" id="feed">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
               <img src="./logos/logo5.png" width="75" height="85">
@@ -56,10 +68,15 @@ else {
                 <li class="nav-item">
                     <a href="chat.php?id=<?php echo $user['id']; ?>" class="btn btn-primary position-relative">
                       <i class='bx bx-conversation'></i> chat
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        99+
-                        <span class="visually-hidden">unread messages</span>
-                      </span>
+                        <?php foreach($open as $opened) { ?>
+                            <?php if ($user['id'] == $opened['to_id']) { ?>
+                                <?php if ($opened['opened'] == 0) { ?>
+                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                      Nuevo mensaje
+                                  </span>
+                                <?php }  ?>
+                            <?php } ?>
+                        <?php } ?>
                   </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -82,4 +99,10 @@ else {
         </div>
     </nav>
 
-
+    <script>
+        $(document).ready(function(){
+            var refreshId = setInterval( function(){
+            $('#feedd').load('cabacera.php');//actualizas el div automaticamente
+            }, 2000 );
+        });
+    </script>

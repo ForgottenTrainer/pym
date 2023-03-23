@@ -66,7 +66,7 @@ a{
                             <h3 class="fs-xs m-2"> <?= $conversation['nombre']; ?> </h3>
                             <small>
                                 <?php 
-                                    //echo lastChat($_SESSION['id'], $conversation['id'], $conn);
+                                    //echo lastChat($user['id'], $conversation['id'], $conn);
                                 ?>
                             </small>
                         </div>

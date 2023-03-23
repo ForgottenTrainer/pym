@@ -10,11 +10,11 @@ function lastChat($id_1, $id_2, $conn){
     $stmt->execute([$id_1, $id_2, $id_1, $id_2]);
 
     if ($stmt->rowCount() > 0) {
-    	$chat = $stmt->fetch();
-    	return $chat['message'];
+      $chat = $stmt->fetch();
+      return $chat['message'];
     }else {
-    	$chat = '';
-    	return $chat;
+      $chat = '';
+      return $chat;
     }
 
 }
