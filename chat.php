@@ -103,8 +103,6 @@ $stmt->execute();
     </div>
 </div>
 <script>
-
-<script>
     $(document).ready(function(){
         //Busqueda
         $("#searchText").on("input",function(){
