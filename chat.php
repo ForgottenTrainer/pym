@@ -5,10 +5,12 @@ if(isset($user['nombre'])){
     include "helpers/user.php";
     include 'helpers/conversations.php';
     include 'helpers/last_chat.php';
+    include 'helpers/getMessages.php';
     //Extraemos los datos del Usuario
     $users = getUser($user['nombre'], $conn);
+
     //Obteniendo las conversaciones de los usuarios
-    $conversations = getConversation($user['id'], $conn);
+    $conversations = getConversation($users['id'], $conn);
 }
 ?>
 <style>
@@ -27,12 +29,13 @@ if(isset($user['nombre'])){
 
 a{
     text-decoration: none;
+    color: #875892;
 }
 
 .online {
     width: 10px;
     height: 10px;
-    background: green;
+    background: purple;
     border-radius: 50%;
 }
 
@@ -41,7 +44,24 @@ a{
     max-height: 50vh;
 }
 
+.m-20 {
+    margin: 300px;
+}
+
 </style>
+
+<?php 
+
+//Datos del usuario
+
+$currentUserId = $_SESSION['id'];
+
+$sql = "SELECT from_id, to_id, opened FROM chats WHERE to_id = :currentUserId AND opened = 0";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+$stmt->execute();
+
+?>
 
 <div class="container">
     <div class="d-flex justify-content-center align-items-center vh-100">
@@ -57,35 +77,32 @@ a{
                 <button class="btn btn-success" id="searchBtn"><i class='bx bx-search-alt'></i></button>
             </div>
             <ul class="list-group mvh-50 overflow-auto chat-box" id="chatList">
-            <?php if(!empty($conversations)){ ?>
-                <?php foreach($conversations as $conversation){ ?>
-                <li class="list-group-item">
-                    <a href="chats.php?users=<?= $conversation['nombre']; ?>" class="d-flex justify-content-between align-items-center p-2">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle" width="50" height="50" src="perfiles/<?= $conversation['perfil']; ?>" />
-                            <h3 class="fs-xs m-2"> <?= $conversation['nombre']; ?> </h3>
-                            <small>
-                                <?php 
-                                    //echo lastChat($user['id'], $conversation['id'], $conn);
-                                ?>
-                            </small>
-                        </div>
-                        <!--<div title="online">
-                            <div class="online"></div>
-                        </div> -->
-                    </a>
-                </li>
+                <?php foreach ($conversations as $conversation) { ?>
+                    <li class="list-group-item">
+                        <a href="chats.php?users=<?= $conversation['nombre']; ?>" class="d-flex justify-content-between align-items-center p-2">
+                            <div class="d-flex align-items-center">
+                                <img class="rounded-circle" width="50" height="50" src="perfiles/<?= $conversation['perfil']; ?>" />
+                                <h3 class="fs-xs m-2"> <?= $conversation['nombre']; ?> </h3>
+                                <small>
+                                    <?php
+                                    echo lastChat($_SESSION['id'], $conversation['id'], $conn);
+                                    ?>
+                                </small>
+                            </div>
+                            <?php
+                            $unreadMessagesCount = getUnreadMessagesCount($currentUserId, $conversation['id'], $conn);
+                            if ($unreadMessagesCount > 0) {
+                            ?>
+                                <span class="position-absolute m-20 translate-middle badge rounded-pill bg-danger notification-badge">Nuevo Mensaje</span>
+                            <?php } ?>
+                        </a>
+                    </li>
                 <?php } ?>
-            <?php }
-            else { ?>
-                <div class="alert alert-info" role="alert">
-                   Ups, por ahora no hay nada
-                </div>
-            <?php } ?>
             </ul>
         </div>
     </div>
 </div>
+<script>
 
 <script>
     $(document).ready(function(){
