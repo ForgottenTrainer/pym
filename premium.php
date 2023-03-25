@@ -115,7 +115,7 @@
             <ul class="list-unstyled mt-3 mb-4">
               <li>Publicaciones de productos ilimitado</li>
               <li>Publicaciones de servicios 15</li>
-              <li>Phone and email support</li>
+              <li>Prioridad publicitaria nivel 2</li>
               <li>Help center access</li>
             </ul>
             <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
