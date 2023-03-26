@@ -4,6 +4,7 @@
 //Lee el inicio de sesion
 session_start();?>
 
+
 <?php
 if (isset($_SESSION['id'])){
     //Compara el id del inicio de sesion con la base de datos para localizar el usuario
@@ -39,8 +40,6 @@ if($stmt->rowCount() > 0){
 }
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,8 +87,8 @@ if($stmt->rowCount() > 0){
                 </ul>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form action="search.php" method="post" class="d-flex" role="search">
+                <input class="form-control me-2" type="search" id="busqueda" name="busqueda" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             </div>
