@@ -62,51 +62,84 @@ if($_GET){
 $ObjConexion = new conexion();
 $resultado=$ObjConexion->consultar("SELECT * FROM `servicio`");
 
+?>
+
+<?php 
+
+$query = "SELECT * FROM contador WHERE `user_id` = :user_id";
+$stmt3=$conn->prepare($query);
+$stmt3->bindParam(':user_id', $user);
+$stmt3->execute();
+$result = $stmt3->fetch(PDO::FETCH_ASSOC); // Obtén el resultado de la consulta como un array asociativo
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $conta = $result['servicios'];
+    $up = $conta - 1;
+
+    $sql2 = "UPDATE `contador` SET `servicios` = :productos WHERE `user_id` = :id";
+    $stmt4 = $conn->prepare($sql2);
+    $stmt4->bindParam(':productos', $up);
+    $stmt4->bindParam(':id', $user);
+    $stmt4->execute();
+
+     // Redirige a la misma página después de la actualización
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
 
 ?>
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
-                    Datos del articulo
-                </div>
-                <div class="card-body shadow p-3">
-                    <form action="servicio.php" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                            <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">Titulo para tu articulo</div>
+                <?php if ($result && $result['user_id'] == $user){ ?>
+                    <?php if($result['servicios'] >= 0) { ?>
+                       <div class="card-header">
+                            Datos del articulo
+                            <br>
+                            <span>Cantidad disponible</span>
+                            <?php echo $result['servicios']; ?>                            
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Imagen</label>
-                            <input type="file" class="form-control" name="archivo">
+                        <div class="card-body shadow p-3">
+                            <form action="servicio.php" method="post" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Titulo</label>
+                                    <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">Titulo para tu articulo</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Imagen</label>
+                                    <input type="file" class="form-control" name="archivo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Categorias</label>
+                                    <select class="form-select" name="categoria" aria-label="Default select example">
+                                        <option selected>Escolares</option>
+                                        <option value="Plomeria">Plomeria</option>
+                                        <option value="Limpieza">Electricidad</option>
+                                        <option value="Hogar">Hogar</option>
+                                        <option value="Renta">Renta</option>
+                                        <option value="Herreria">Herreria</option>
+                                        <option value="Veterinaria">Veterinaria</option>
+                                        <option value="Cerrajeria">Cerrajeria</option>
+                                        <option value="Tecnologia">Tecnologia</option>
+                                        <option value="Carpinteria">Carpinteria</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+                                    <textarea type="text" class="form-control" name="descripcion"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Categorias</label>
-                            <select class="form-select" name="categoria" aria-label="Default select example">
-                                <option selected>Escolares</option>
-                                <option value="Plomeria">Plomeria</option>
-                                <option value="Limpieza">Electricidad</option>
-                                <option value="Hogar">Hogar</option>
-                                <option value="Renta">Renta</option>
-                                <option value="Herreria">Herreria</option>
-                                <option value="Veterinaria">Veterinaria</option>
-                                <option value="Cerrajeria">Cerrajeria</option>
-                                <option value="Tecnologia">Tecnologia</option>
-                                <option value="Carpinteria">Carpinteria</option>
-                            </select>
+                        <div class="card-footer text-muted">
+                            Recuerda llenar de manera correcta la informacion dentro del formulario.
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
-                <div class="card-footer text-muted">
-                    Recuerda llenar de manera correcta la informacion dentro del formulario.
-                </div>
+                    <?php } ?>
+                <?php } ?>
             </div>
         </div>
         <div class="col-md-6">

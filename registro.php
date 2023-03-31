@@ -29,6 +29,8 @@ if($_POST){
                 Se creo el usuario correctamente
             </div>
             ';
+
+            header("Location:login.php");
         }
         else {
             echo '

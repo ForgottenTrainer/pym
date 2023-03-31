@@ -1,0 +1,7 @@
+{
+    "require": {
+        "stripe/stripe-php": "^10.11",
+        "vlucas/phpdotenv": "^5.5",
+        "mercadopago/dx-php": "^2.5"
+    }
+}
