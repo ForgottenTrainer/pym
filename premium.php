@@ -1,57 +1,57 @@
 <?php include("cabacera.php"); ?>
+<script src="https://www.paypal.com/sdk/js?client-id=AYc7OaTCpT23fw8m-Sw9o5pKcRkXK4amIGmcV_3HvZBIUedQA_BybLryuNlrGp4AtAMo9_s37A4_Sk0A&currency=MXN"></script>
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
 
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
 
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
 
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+  }
 
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>
 <body>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -84,7 +84,7 @@
               <li>3 Publicaciones de servicios</li>
               <li>Help center access</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Comprar</button>
+            <button class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Comprar Plan Novato</button>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
               <li>Prioridad publicitaria nivel 1</li>
               <li>Help center access</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
+            <button class="w-100 btn btn-lg btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Comprar Plan Pro</button>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@
               <li>Prioridad publicitaria nivel 2</li>
               <li>Help center access</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Comprar</button>
+            <button class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Comprar Plan Empresarial</button>
           </div>
         </div>
       </div>
@@ -180,44 +180,140 @@
       </table>
     </div>
   </main>
-
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
-      <div class="col-12 col-md">
-        <img class="mb-2" src="logos/logo5.png" alt="" width="54" height="49">
-        <small class="d-block mb-3 text-muted">&copy; 2023–2028</small>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Features</h5>
-        <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>About</h5>
-        <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-        </ul>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Plan Novato</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3 class="fs-5">Costo de $99.99 MXN</h3>
+          <div class="paypal-button-container"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Plan Pro</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3 class="fs-5">Costo de $299.99 MXN</h3>
+          <div class="paypal-button-pro"></div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">Plan Enterprise</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3 class="fs-5">Costo de $599.99 MXN</h3>
+          <div class="paypal-button-enterprise"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger " data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  paypal.Buttons({
+    style: {
+      color:'black',
+      label: 'pay'
+    },
+    createOrder: function(data,actions){
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: 99.99
+          }
+        }]
+      });
+    },
+    onApprove: function(data,actions){
+      actions.order.capture().then(function(detalles){
+        window.location.href="helpers/success/successNovato.php";
+      });
+    },
+    onCancel: function(data){
+      window.location.href="error.php";
+    }
+  }).render('.paypal-button-container');
+</script>
+
+<script>
+  paypal.Buttons({
+    style: {
+      color:'black',
+      label: 'pay'
+    },
+    createOrder: function(data,actions){
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: 299.99
+          }
+        }]
+      });
+    },
+    onApprove: function(data,actions){
+      actions.order.capture().then(function(detalles){
+        window.location.href="helpers/success/successPro.php";
+      });
+    },
+    onCancel: function(data){
+      window.location.href="error.php";
+    }
+  }).render('.paypal-button-pro');
+</script>
+
+<script>
+  paypal.Buttons({
+    style: {
+      color:'black',
+      label: 'pay'
+    },
+    createOrder: function(data,actions){
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: 599.99
+          }
+        }]
+      });
+    },
+    onApprove: function(data,actions){
+      actions.order.capture().then(function(detalles){
+        window.location.href="helpers/success/successEnterprise.php";
+      });
+    },
+    onCancel: function(data){
+      window.location.href="error.php";
+    }
+  }).render('.paypal-button-enterprise');
+</script>
+
 
 <?php include("pie.php"); ?>
