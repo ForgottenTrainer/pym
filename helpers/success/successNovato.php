@@ -11,6 +11,22 @@ $stmt->execute();
 
 ?>
 
+<<<<<<< HEAD
+=======
+<?php 
+$servicios = 3;
+$productos = 5;
+
+$sql = "INSERT INTO contador (user_id, servicios, productos) VALUES (:user_id, :servicios, :productos)";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':user_id', $user['id']);
+$stmt->bindParam(":servicios", $servicios);
+$stmt->bindParam(":productos", $productos);
+$stmt->execute();
+
+?>
+
+>>>>>>> d95c18972220d245fb22d5b0c835df4ebc51639c
 <style>
 body{
 	width:100%;
