@@ -11,6 +11,8 @@ $stmt->execute();
 
 ?>
 
+<<<<<<< HEAD
+=======
 <?php 
 
 $sql2 = "SELECT * FROM contador WHERE user_id = :id";
@@ -44,6 +46,7 @@ else {
 
 ?>
 
+>>>>>>> d95c18972220d245fb22d5b0c835df4ebc51639c
 <style>
 body{
 	width:100%;

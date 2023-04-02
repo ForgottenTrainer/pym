@@ -1,5 +1,5 @@
 <?php include("cabacera.php"); ?>
-<script src="https://www.paypal.com/sdk/js?client-id=AYc7OaTCpT23fw8m-Sw9o5pKcRkXK4amIGmcV_3HvZBIUedQA_BybLryuNlrGp4AtAMo9_s37A4_Sk0A&currency=MXN"></script>
+<script src="https://www.paypal.com/sdk/js?&currency=MXN"></script>
 <style>
   .bd-placeholder-img {
     font-size: 1.125rem;
