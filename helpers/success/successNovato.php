@@ -12,15 +12,35 @@ $stmt->execute();
 ?>
 
 <?php 
+
+$sql2 = "SELECT * FROM contador WHERE user_id = :id";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->bindParam(':id',$user['id']);
+$stmt2->execute();
+$result = $stmt2->fetch(PDO::FETCH_ASSOC);
+
 $servicios = 3;
 $productos = 5;
 
-$sql = "INSERT INTO contador (user_id, servicios, productos) VALUES (:user_id, :servicios, :productos)";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':user_id', $user['id']);
-$stmt->bindParam(":servicios", $servicios);
-$stmt->bindParam(":productos", $productos);
-$stmt->execute();
+if ($result && $result['user_id'] == $user['id']){
+  $sql = "UPDATE contador SET productos = :productos, servicios = :servicios WHERE user_id = :id";
+  $stmt3 = $conn->prepare($sql);
+  $stmt3->bindParam(':id', $user['id']);
+  $stmt3->bindParam(":servicios", $servicios);
+  $stmt3->bindParam(":productos", $productos);
+  $stmt3->execute(); 
+           
+}
+
+else {
+  $sql = "INSERT INTO contador (user_id, servicios, productos) VALUES (:user_id, :servicios, :productos)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':user_id', $user['id']);
+  $stmt->bindParam(":servicios", $servicios);
+  $stmt->bindParam(":productos", $productos);
+  $stmt->execute(); 
+}
+
 
 ?>
 
@@ -34,10 +54,10 @@ body{
 	position:absolute;
 	top:0;
 	left:0;
-	width:100%;
+	width: 100%;
 	height:100%;
 	background: linear-gradient(90deg,#189086,#2f8198);
-background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);	
+	background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);	
 }
 
 .done{

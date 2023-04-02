@@ -1,5 +1,5 @@
 <?php include("cabacera.php"); ?>
-<script src="https://www.paypal.com/sdk/js?&currency=MXN"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AYc7OaTCpT23fw8m-Sw9o5pKcRkXK4amIGmcV_3HvZBIUedQA_BybLryuNlrGp4AtAMo9_s37A4_Sk0A&currency=MXN"></script>
 <style>
   .bd-placeholder-img {
     font-size: 1.125rem;
@@ -77,7 +77,7 @@
             <h4 class="my-0 fw-normal">Novato</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$99.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$99.99<small class="text-muted fw-light">MXN</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>5 Publicaciones de productos</li>
               <li>Atencion al cliente</li>
@@ -94,7 +94,7 @@
             <h4 class="my-0 fw-normal">Pro</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$299.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$299.99<small class="text-muted fw-light">MXN</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>20 Publicaciones de productos</li>
               <li>10 Publicaciones de servicios</li>
@@ -111,10 +111,10 @@
             <h4 class="my-0 fw-normal">Empresa</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">$599.99<small class="text-muted fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">$599.99<small class="text-muted fw-light">MXN</small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>Publicaciones de productos ilimitado</li>
-              <li>Publicaciones de servicios 15</li>
+              <li>Publicaciones de productos 50</li>
+              <li>Publicaciones de servicios 40</li>
               <li>Prioridad publicitaria nivel 2</li>
               <li>Help center access</li>
             </ul>
@@ -235,6 +235,7 @@
       </div>
     </div>
   </div>
+  <input type="hidden" value="<?php echo $user['id']; ?>" id="iduser" name="">
 </div>
 
 <script>
@@ -255,6 +256,7 @@
     onApprove: function(data,actions){
       actions.order.capture().then(function(detalles){
         window.location.href="helpers/success/successNovato.php";
+        
       });
     },
     onCancel: function(data){

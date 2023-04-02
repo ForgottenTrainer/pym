@@ -9,6 +9,34 @@ $stmt->bindParam(':id', $user['id']);
 $stmt->bindParam(':roll', $roles);
 $stmt->execute();
 
+$sql2 = "SELECT * FROM contador WHERE user_id = :id";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->bindParam(':id',$user['id']);
+$stmt2->execute();
+$result = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+$servicios = 100;
+$productos = 100;
+
+if ($result && $result['user_id'] == $user['id']){
+  $sql = "UPDATE contador SET productos = :productos, servicios = :servicios WHERE user_id = :id";
+  $stmt3 = $conn->prepare($sql);
+  $stmt3->bindParam(':id', $user['id']);
+  $stmt3->bindParam(":servicios", $servicios);
+  $stmt3->bindParam(":productos", $productos);
+  $stmt3->execute(); 
+           
+}
+
+else {
+  $sql = "INSERT INTO contador (user_id, servicios, productos) VALUES (:user_id, :servicios, :productos)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':user_id', $user['id']);
+  $stmt->bindParam(":servicios", $servicios);
+  $stmt->bindParam(":productos", $productos);
+  $stmt->execute(); 
+}
+
 ?>
 
 <style>

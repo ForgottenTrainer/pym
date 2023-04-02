@@ -31,22 +31,35 @@ else {
 }
 ?>
 
+<style>
+  .align-start {
+    text-align: start;
+  }
 
+  .mr-4{
+    margin-left: 4rem;
+  }
+</style>
 <br />
 <div class="container text-center">
   <div class="row">
-    <div class="col">
-      <img class="rounded" width="550" height="400" src="imagenes/<?php echo $row['imagen'] ?>">
+    <div class="col-md-6">
+      <img class="d-block w-100 rounded" width="550" height="400" src="imagenes/<?php echo $row['imagen'] ?>">
     </div>
-    <div class="col">
+    <div class="col-md-6">
     <!-- Muestra en pantalla la consulta de base de datos -->
-      <h1 class="display-5 fw-bold"><?php echo $row['nombre']; ?> </h1>
-      <p class="col-md-8 fs-4 m-auto"> <?php echo $row['descripcion'] ?> </p>
-      <p class="col-md-8 "> Categoria: <?php echo $row['categoria']; ?> </p>
-      <p class="col-md-8 fs-4 m-auto">$ <?php echo $row['precio'];?> </p>
-      <a  href="chats.php?users=<?php echo $user['nombre']; ?>" class="btn btn-success">Contactar vendedor</a>
-      <button class="btn btn-danger">Reportar publicacion</button>
-      <input type="hidden" value="<?php echo $row['user_id']; ?>"/>
+        <div class="mr-4">
+        <h1 class="card-title align-start mb-4"><?php echo $row['nombre']; ?> </h1>
+        <p class="card-text fs-5 align-start"> <?php echo $row['descripcion'] ?> </p>
+        <p class="col-text align-start "> Categoria: <?php echo $row['categoria']; ?> </p>
+        <p class="col-md-8 fs-4 align-start">$ <?php echo $row['precio'];?> </p>
+        <br>
+        <a  href="chats.php?users=<?php echo $user['nombre']; ?>" class="btn btn-outline-success ">Contactar vendedor</a>
+        <br>
+        <br>
+        <button class="btn btn-danger  ">Reportar publicacion</button>
+        <input type="hidden" value="<?php echo $row['user_id']; ?>"/>        
+      </div>
     </div>
   </div>
 </div>

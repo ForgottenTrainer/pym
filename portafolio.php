@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row">
         <div class="col-md-6">
             <?php if ($result && $result['user_id'] == $user){ ?>
-                <?php if($result['productos'] >= 0) { ?>
+                <?php if($result['productos'] > 0) { ?>
                     <div class="card">
                         <div class="card">
                             <div class="card-header">
@@ -138,7 +138,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                         </div>
                     </div>
+                <?php } else { ?>
+                    <div class="alert alert-danger" role="alert">
+                        Te quedaste sin creditos, recarga mas en la seccion <a href="premium.php?id=<?php echo $user; ?>" class="btn btn-danger">Aqui</a>
+                    </div>    
                 <?php } ?>
+            <?php } else { ?>
+                <div class="alert alert-primary" role="alert">
+                    Se parte de los vendores PYMMarket <a href="premium.php?id=<?php echo $user; ?>" class="btn btn-primary">Aqui</a>
+                </div>
             <?php } ?>
         </div>
         <div class="col-md-6">

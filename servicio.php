@@ -95,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-md-6">
             <div class="card">
                 <?php if ($result && $result['user_id'] == $user){ ?>
-                    <?php if($result['servicios'] >= 0) { ?>
+                    <?php if($result['servicios'] > 0) { ?>
                        <div class="card-header">
                             Datos del articulo
                             <br>
@@ -138,7 +138,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="card-footer text-muted">
                             Recuerda llenar de manera correcta la informacion dentro del formulario.
                         </div>
+                    <?php } else { ?>
+                        <div class="alert alert-danger" role="alert">
+                            Te quedaste sin creditos, recarga mas en la seccion <a href="premium.php?id=<?php echo $user; ?>" class="btn btn-danger">Aqui</a>
+                        </div>    
                     <?php } ?>
+                <?php } else { ?>
+                    <div class="alert alert-primary" role="alert">
+                        Se parte de los vendores PYMMarket <a href="premium.php?id=<?php echo $user; ?>" class="btn btn-primary">Aqui</a>
+                    </div>
                 <?php } ?>
             </div>
         </div>

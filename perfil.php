@@ -18,13 +18,19 @@ if($count > 0){
 
 ?>
 
+<style type="text/css">
+	.pl-5 {
+		margin-left: 2rem;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
-		<div class="col">
-			<img class="rounded-circle mtru-4" width="400" height="400" src="perfiles/<?php echo $user['perfil'];?>">
+		<div class="col-md-6">
+			<img class="d-block rounded-circle w-100 " height="500" src="perfiles/<?php echo $user['perfil'];?>">
 		</div>
-		<div class="col">
-		    <div class="p-5 mb-4 bg-light rounded-3">
+		<div class="col-md-6">
+		    <div class="pl-5 mb-4 bg-light rounded-3">
 		        <div class="container-fluid py-5">
 					<h1 class="display-5 fw-bold">Bienvenido/a <?php echo $user['nombre']; ?> </h1>
 					<p class="col-md-8 fs-4">Correo <?php echo $user['usuario']; ?> </p>
@@ -34,6 +40,7 @@ if($count > 0){
 			</div>
 		</div>
 	</div>
+	<br>
     <form action="udPerfil.php" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <input type="hidden" name="id" value="<?php echo $datos['id']; ?>"/>

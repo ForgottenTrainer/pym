@@ -43,6 +43,34 @@ if($_POST){
 }
 
 ?>
+
+<style type="text/css">
+    body {
+        background: linear-gradient(
+            rgba(0,0,0,0.5),
+            rgba(0,0,0,0.5)
+        ),url('https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .bg-transparent {
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-roger {
+        background: linear-gradient( hsl(228,66%,53%), hsl(228,66%,47%) );
+        padding: 15px 29px;
+        border-radius: .5rem;
+        box-shadow: 0 4px 8px hsla(228, 66%, 45%, .25);
+        cursor: pointer;
+        transition: .3s;
+        color: #fff;
+    }
+</style>
+
 <!doctype html>
 <html lang="en">
 
@@ -60,24 +88,27 @@ if($_POST){
 <body >
     <div class="container">
     <br />
+    <br>
+    <br />
+    <br>
         <div class="row justify-content-center align-items-center g-2">
             <div class="col-md-4"></div>
             
             <div class="col-md-4 ">
-                <div class="card text-start bg-light">
+                <div class="card text-start bg-transparent">
                   <div class="card-body">
-                  <div class="p-3 mb-2 bg-dark text-white rounded"><h1>Login</h1></div>
+                  <div class="p-3 mb-2  text-white rounded"><h1 class="display-5 fw-bold">Ingresar</h1></div>
                     <form action="login.php" method="post">
                         <div class="mb-3">
-                            <label  for="exampleInputEmail1" class="form-label">Correo</label>
+                            <label  for="exampleInputEmail1" class="text-white form-label">Correo</label>
                             <input name="usuario" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">No compartas tu correo con nadie.</div>
+                            <div id="emailHelp" class="text-white form-text">No compartas tu correo con nadie.</div>
                         </div>
                         <div class="mb-3">
-                            <label  for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <label  for="exampleInputPassword1" class="text-white form-label">Contraseña</label>
                             <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-roger text-white">Ingresar</button>
                         <a href="./registro.php" class="btn btn-secondary">Registrate</a>
                     </form>
                   </div>

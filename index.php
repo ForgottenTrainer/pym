@@ -14,7 +14,7 @@ $proyecto = $ObjConexion->consultar("SELECT * FROM `proyecto`");
 
     <div class="row">
         <div class="col">
-            <div class=" p-5 mb-4 bg-light rounded-3">
+            <div class="mb-4 bg-light rounded-3">
                 <div class="container-fluid py-5">
                 <!-- Lee el nombre del usuario mediante su sesion iniciada por su id -->
                   <h1 class="display-5 fw-bold">Bienvenido/a <?php echo $user['nombre']; ?> </h1>
