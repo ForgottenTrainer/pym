@@ -18,10 +18,12 @@ if($_POST){
         //Compara resultados
         $results = $records->fetch(PDO::FETCH_ASSOC);
 
-        $message = '';
+        
         //Lee la contraseña encriptada con la enviada por el usuario
-        if(count($results) > 0 && password_verify($_POST['password'], $results['password'])){
-            //Si la validacion es exitosa se reenvia al usuario al index.php
+        $message = '';
+        // Verifica si $results es un array y compara la contraseña encriptada con la enviada por el usuario
+        if(is_array($results) && count($results) > 0 && password_verify($_POST['password'], $results['password'])){
+            // Si la validación es exitosa se reenvía al usuario al index.php
             $_SESSION['id'] = $results['id'];
             header('location:index.php');
         }

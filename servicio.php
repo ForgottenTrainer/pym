@@ -174,7 +174,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <td><img width="100" height="100" src="imagenes/<?php echo $proyecto['imagen']; ?>" ></td>
                                     <td> <?php echo $proyecto['descripcion']; ?></td>
                                     <td> <?php echo $proyecto ['categoria']; ?> </td>
-                                    <td><a class="btn btn-danger" href="?borrar=<?php echo $proyecto['id']; ?>">Borrar</a></td>
+                                    <td><a class="btn btn-danger" href="?borrar=<?php echo $proyecto['id']; ?>"><i class='bx bxs-eraser'></i></a></td>
+                                    <td><a href="updServicio.php?id=<?php echo $proyecto['id']; ?>" class="btn btn-primary"><i class='bx bxs-pencil'></i></a></td>
                                 </tr>
                             <?php } ?>
                         <?php } ?>
