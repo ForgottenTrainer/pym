@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-03-2023 a las 05:05:48
+-- Tiempo de generación: 03-04-2023 a las 22:09:13
 -- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.0.25
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,18 @@ CREATE TABLE `chats` (
   `message` text NOT NULL,
   `opened` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contador`
+--
+
+CREATE TABLE `contador` (
+  `user_id` int(11) NOT NULL,
+  `servicios` int(11) NOT NULL,
+  `productos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
